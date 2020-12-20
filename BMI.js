@@ -1,4 +1,4 @@
-var dataArray = JSON.parse(localStorage.getItem("ITEM")) || [];
+let dataArray = JSON.parse(localStorage.getItem("ITEM")) || [];
 const btn_check = document.querySelector('#get_result')
 const btn_delete = document.querySelector('#delete_result')
 
