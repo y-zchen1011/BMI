@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI</title>
+    <link rel="stylesheet" href="style/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header class="container bg-dark py-5">
+    <div class="row justify-content-center">
+        <img class="col-6 col-md-2" src="img/BMICLogo.png">
+
+        <div class="col-md-4 form-group">
+            <label class="text-warning mb-0" for="height">身高 cm</label>
+            <input class="form-control mb-4" id="height" type="text" placeholder="請輸入身高" >
+
+            <label class="text-warning mb-0" for="weight">體重 kg</label>
+            <input class="form-control" id="weight" type="text" placeholder="請輸入體重" >
+        </div>
+        <div class="col-2 getResultArea">
+            <button class="btn btn-warning rounded-circle h-100 w-100" id="get_result">看結果</button>
+        </div>
+        <div class="col-md-4 row resultArea">
+            <div class="col-md-6 rounded-circle">
+                <div class="rounded-circle h-100 w-100 circleDisplay d-flex align-items-center justify-content-center" id="show_result">
+                    <h3 id="resultBMI">BMI</h3>
+                </div>
+                <span class="restart material-icons">loop</span>
+            </div>
+            <div class="col-md-6 align-self-center">
+                <h3 id="resultTitle"></h3>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main class="container bg-secondary pb-5">
+
+
+        <h2 class=" text-center py-4">BMI 紀錄</h2>
+
+        <table class="mx-auto table-responsive-md mb-5" id="data_table">
+           <!-- <tr class="bg-white py-3 mb-3">
+                <td class="colorTag bg-danger" width="10"></td>
+                <td class="pl-2 py-3 " width="140">理想</td>
+                <td class="py-3" width="135"><span>BMI<wbr></span> 22.3</td>
+                <td class="py-3 " width="140"><span>Weight<wbr></span> 50kg</td>
+                <td class="py-3 text-center text-md-left" width="140"><span>Height<wbr></span> 160cm</td>
+                <td class="py-3 text-right pr-3 " width="135"><span>2020-12-25</span></td>
+            </tr>
+           -->
+
+        </table>
+
+        <div class="row justify-content-center">
+            <button class="btn btn-warning" id="delete_result">刪除紀錄</button>
+        </div>
+
+</main>
+
+
+
+<footer class="container bg-warning py-3">
+    <div class="row">
+        <img class="col-1 mx-auto" src="img/BMICLogoFooter.png">
+    </div>
+</footer>
+
+
+</body>
+<script src="jquery-3.5.0.js"></script>
+<script src="BMI.js"></script>
+</html>

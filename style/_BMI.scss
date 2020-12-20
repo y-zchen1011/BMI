@@ -1,0 +1,61 @@
+$blue :#31baf9;
+$green :#86d73f;
+$red :red;
+$orange :#ff6c03;
+$lightorange :#ff982d;
+
+
+
+header{
+  .form-control{
+    background-color: rgba(88,88,88,0.7);
+    color: #fff;
+    border: 2px solid #ffd366;
+    border-radius: 10px;
+    &:focus{
+      border: 2px solid red;
+    }
+  }
+  .btn{
+    color: #424242;
+    font-size: 24px;
+  }
+  .circleDisplay{
+    border: 5px solid;
+  }
+  .restart{
+    position: absolute;
+    top: 74%;
+    left: 75%;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+main{
+  table{
+    font-size: 20px;
+  }
+  span{
+    font-size: 12px;
+  }
+}
+
+.green{
+  background-color: $green;
+}
+.blue{
+  background-color: $blue;
+}
+.red{
+  background-color: $red;
+}
+.orange{
+  background-color: $orange;
+}
+.lightorange{
+  background-color: $lightorange;
+}
+
+
