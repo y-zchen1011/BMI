@@ -25,7 +25,7 @@ function addItemToLocalStorage() {
     let height = document.querySelector('#height').value; //cm
     let weight = document.querySelector('#weight').value;
 
-    if(validation(height,weight) === false){return; }
+    if(validation(height,weight) === false){return }
 
     let BMI = (weight / ((height / 100) * (height / 100))).toFixed(2);
     let d = new Date();
@@ -50,11 +50,10 @@ function addItemToLocalStorage() {
 
     update();
     checkRecord();
-
+    toggleClass();
 }
 
 function toggleClass(){
-    $('.resultArea').addClass('d-none');
     $('#get_result').click(function (){
         $('.getResultArea').addClass('d-none');
         $('.resultArea').removeClass('d-none');
@@ -64,7 +63,6 @@ function toggleClass(){
         $('.getResultArea').removeClass('d-none');
     });
 }
-toggleClass();
 
 function update(){
     const tr = document.querySelector('#data_table');
@@ -81,7 +79,6 @@ function update(){
     }
     tr.innerHTML = str;
 };
-
 
 function deleteRecord(){
     localStorage.removeItem('ITEM');
@@ -130,7 +127,7 @@ function setResultArea(bmi){
 }
 
 function validation(height, weight){
-    if(height <= 0 || weight <= 0 || weight === undefined || height === undefined){
+    if(height <= 0 || weight <= 0 || weight === undefined || height === undefined || isNaN(weight) || isNaN(height)){
         alert('請輸入有效資料');
         return false;
     }
