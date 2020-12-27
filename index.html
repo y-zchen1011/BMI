@@ -20,15 +20,15 @@
             <label class="text-warning mb-0" for="weight">體重 kg</label>
             <input class="form-control" id="weight" type="text" placeholder="請輸入體重" >
         </div>
-        <div class="col-2 getResultArea">
+        <div class="col-2 getResultArea" id="getResultArea">
             <button class="btn btn-warning rounded-circle h-100 w-100" id="get_result">看結果</button>
         </div>
-        <div class="col-md-4 row resultArea d-none">
+        <div class="col-md-4 row resultArea d-none" id="resultArea">
             <div class="col-md-6 rounded-circle">
                 <div class="rounded-circle h-100 w-100 circleDisplay d-flex align-items-center justify-content-center" id="show_result">
                     <h3 id="resultBMI">BMI</h3>
                 </div>
-                <span class="restart material-icons">loop</span>
+                <span class="restart material-icons" id="restart">loop</span>
             </div>
             <div class="col-md-6 align-self-center">
                 <h3 id="resultTitle"></h3>

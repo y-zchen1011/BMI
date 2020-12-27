@@ -15,6 +15,7 @@ function checkRecord() {
         update();
         $('#delete_result').removeClass('disabled').text('刪除紀錄');
     }
+
 }
 checkRecord();
 
@@ -26,17 +27,19 @@ function addItemToLocalStorage() {
     let weight = document.querySelector('#weight').value;
 
     if(validation(height,weight) === false){return }
-
     let BMI = (weight / ((height / 100) * (height / 100))).toFixed(2);
     let d = new Date();
     let date = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
     title = rangeCheckerTitle(BMI);
+    let id = new Date().getTime();
+    console.log(id);
     let item = {
         Title: title,
         Bmi: BMI,
         height: height, //cm
         weight: weight,
         date: date,
+        id : id,
     };
     dataArray.push({ITEM: item});
     localStorage.setItem('ITEM', JSON.stringify(dataArray));
@@ -50,19 +53,22 @@ function addItemToLocalStorage() {
 
     update();
     checkRecord();
-    toggleClass();
+
 }
 
-function toggleClass(){
-    $('#get_result').click(function (){
-        $('.getResultArea').addClass('d-none');
-        $('.resultArea').removeClass('d-none');
-    });
-    $('.restart').click(function (){
-        $('.resultArea').addClass('d-none');
-        $('.getResultArea').removeClass('d-none');
-    });
-}
+//toggle
+$('#get_result').click(function (){
+    console.log("compiled 1");
+    $('#getResultArea').addClass('d-none');
+    $('#resultArea').removeClass('d-none');
+});
+
+$('#restart').click(function (){
+    console.log("compiled 2");
+    $('#resultArea').addClass('d-none');
+    $('#getResultArea').removeClass('d-none');
+});
+
 
 function update(){
     const tr = document.querySelector('#data_table');
@@ -75,6 +81,11 @@ function update(){
             <td class="py-3 text-center text-md-left" width="140"><span>Height<wbr></span>${dataArray[i].ITEM.height} <span>cm</span></td>
             <td class="py-3 " width="140"><span>Weight<wbr></span>${dataArray[i].ITEM.weight} <span>kg</span></td>
             <td class="py-3 text-right pr-3 " width="135"><span>${dataArray[i].ITEM.date}</span></td>
+            <td class="py-3 text-right pr-3 " width="30">
+            <button type="button" class="close text-right remove" aria-label="Close" data-key="${dataArray[i].ITEM.id}">
+              <span class="text-dark h4 ml-3" aria-hidden="true">&times;</span>
+            </button>
+            </td>
         </tr>`;
     }
     tr.innerHTML = str;
@@ -132,3 +143,15 @@ function validation(height, weight){
         return false;
     }
 }
+
+$('#data_table').on('click', '.remove',function (){
+    let key = $(this).data('key');
+    let newIndex = dataArray.findIndex((item)=>(key === item.ITEM.id));
+
+    dataArray.splice(newIndex,1);
+
+    localStorage.setItem('ITEM', JSON.stringify(dataArray));
+
+    update();
+    checkRecord();
+})
